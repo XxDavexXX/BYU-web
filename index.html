@@ -14,9 +14,13 @@
   <header>
     <img src="images/profile_image.jpeg" alt="Profile Image">
     <h1>Dave Ryan Santivañez Munguia</h1>
+    <div class="close-icon">X</div>
+    <div style="margin-left: 10px;" class="dark-mode-toggle">🌙</div>
+
+    
   </header>
 
-  <nav>
+  <nav class="nav_principal">
     <ul class="nav_uno">
       <li style="background-color: rgb(117, 30, 30);color: #fff;"><a style="color: #fff;" href="#">Home</a></li>
       <li style="background-color: rgb(0, 0, 0);color: #fff;"><a  style="color: #fff;" href="chamber_site_plan.html">Chamber</a></li>
@@ -32,12 +36,12 @@
         <section class="card">
             <h3>Learning Activities</h3>
             <ul>
-                <li><a href="#">Week 1: Layout | Media Query | Js Pen</a></li>
-                <li><a href="#">Week 2: </a></li>
-                <li><a href="#">Week 3: </a></li>
-                <li><a href="#">Week 4: </a></li>
-                <li><a href="#">Week 5: </a></li>
-                <li><a href="#">Week 6: </a></li>
+                <li><a class="card_in_all dark-mode" href="#">Week 1: Layout | Media Query | Js Pen</a></li>
+                <li><a class="card_in_all" href="#">Week 2: </a></li>
+                <li><a class="card_in_all" href="#">Week 3: </a></li>
+                <li><a class="card_in_all" href="#">Week 4: </a></li>
+                <li><a class="card_in_all" href="#">Week 5: </a></li>
+                <li><a class="card_in_all" href="#">Week 6: </a></li>
             </ul>
         </section>
 
@@ -68,5 +72,39 @@
 
     const lastModifiedDateElement = document.getElementById('lastModifiedDate');
     lastModifiedDateElement.textContent = lastModifiedDate;
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+      const darkModeToggle = document.querySelector('.dark-mode-toggle');
+      const main = document.querySelector('main');
+      const sections = document.querySelectorAll('.card');
+      const links = document.querySelectorAll('.card_in_all');
+
+      darkModeToggle.addEventListener('click', function() {
+          main.classList.toggle('dark-mode');
+          sections.forEach(function(section) {
+              section.classList.toggle('dark-mode');
+          });
+
+            
+          links.forEach(function(link) {
+              // link.style.color = 'white'; 
+              link.classList.toggle('dark-mode');
+          });
+      });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+  const closeIcon = document.querySelector('.close-icon');
+  const navPrincipal = document.querySelector('.nav_principal');
+
+  closeIcon.addEventListener('click', function() {
+    navPrincipal.classList.toggle('hidden');
+  });
+});
+
+
+
+
 
 </script>
