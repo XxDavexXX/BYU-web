@@ -12,7 +12,7 @@
 </head>
 <body>
   <header>
-    <img src="images/profile_image.jpeg" alt="Profile Image">
+    <img src="images/profile_image.webp" alt="Profile Image">
     <h1>Dave Ryan Santivañez Munguia</h1>
     <div class="close-icon">X</div>
     <div style="margin-left: 10px;" class="dark-mode-toggle">🌙</div>
@@ -30,6 +30,22 @@
   </nav>
 
   <main>
+
+    <picture class="picture_one">
+      <div class="templo-etiqueta">Templo de los Últimos Días</div>
+      <!-- Imagen para vista móvil (perfil 400px) -->
+      <source media="(max-width: 400px)" srcset="images/yigo_guam_temple.webp">
+      
+      <!-- Imagen para vistas más grandes (hasta 960px de ancho) -->
+      <source media="(max-width: 960px)" srcset="images/yigo_guam_temple.webp">
+      
+      <!-- Fallback para navegadores que no admiten la etiqueta source -->
+      <img class="image_one_webp" src="images/yigo_guam_temple.webp" alt="Imagen del templo de los últimos días">
+    </picture>
+
+    
+
+
     <h2>WDD 230: Web Frontend Development</h2>
 
     <div class="secciones">
@@ -53,7 +69,11 @@
     </div>
     
   </main>
-
+  <br>
+  <br>
+  <div style="width: 100%; display: flex; justify-content: center;">
+     <iframe style="width: 80%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.8029691729307!2d-76.80017312304379!3d-11.988131290815652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105e9b3803a5a71%3A0x97644533f304c303!2sEl%20Cuadro%2C%20Chaclacayo%2015472!5e0!3m2!1ses!2spe!4v1700531059060!5m2!1ses!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
  <footer>
     <p class="p1">&copy; <span id="currentYear"></span> Dave Ryan Santivañez Munguia - Perú</p>
     <p id="lastModified">Last Modified: <span id="lastModifiedDate"></span></p>
