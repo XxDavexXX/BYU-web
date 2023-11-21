@@ -32,45 +32,57 @@
 
   <nav class="nav_principal">
     <ul class="nav_uno">
-      <li style="background-color: rgb(117, 62, 30);color: #fff;"><a style="color: #fff;" href="#">Home</a></li>
-      <li style="background-color: rgb(67, 124, 134);color: #fff;"><a  style="color: #fff;" href="discover.html">Discover</a></li>
+      <li style="background-color: rgb(117, 62, 30);color: #fff;"><a style="color: #fff;" href="index.html">Home</a></li>
+      <li style="background-color: rgb(67, 124, 134);color: #fff;"><a  style="color: #fff;" href="chamber_site_plan.html">Discover</a></li>
       <li style="background-color: rgb(67, 124, 134);color: #fff;"><a style="color: #fff;" href="#">Directory</a></li>
       <li style="background-color: rgb(67, 124, 134);color: #fff;"><a  style="color: #fff;" href="#">Join</a></li>
     </ul>
   </nav>
+  <br><br><br><br><br>
 
-  <div class="log_hero" style="width: 100%; display: flex; justify-content: center;">
-    <img style="width: 80%; height: 600px; padding: 30px;" src="images/landscape.jpeg" alt="">
+
+
+  <!-- Aquie deberia ir lo pedido en la tares -->
+
+  <div id="lastVisitMessageContainer"></div>
+
+  <div style="width: 100%; display: flex;justify-content: center;">
+    <aside style="width: 35%;" class="sidebar">
+        <div style="display: grid;width: 100%; justify-content: center;flex-direction: column;align-items: center;">
+            <h2 style="width: auto;text-align: center;">Heading</h2>
+            <p style="text-align: justify;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam ad minima id voluptate quis veritatis repellat nostrum! Rerum excepturi laboriosam voluptas iure. Corrupti voluptatibus distinctio modi facilis atque sequi ea?</p>
+        </div>
+        <div style="display: grid;width: 100%; justify-content: center;flex-direction: column;align-items: center;">
+            <h2 style="width: auto;text-align: center;">Heading</h2>
+            <p style="text-align: justify;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam ad minima id voluptate quis veritatis repellat nostrum! Rerum excepturi laboriosam voluptas iure. Corrupti voluptatibus distinctio modi facilis atque sequi ea?</p>
+        </div>
+        <div style="display: grid;width: 100%; justify-content: center;flex-direction: column;align-items: center;">
+            <h2 style="width: auto;text-align: center;">Heading</h2>
+            <p style="text-align: justify;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam ad minima id voluptate quis veritatis repellat nostrum! Rerum excepturi laboriosam voluptas iure. Corrupti voluptatibus distinctio modi facilis atque sequi ea?</p>
+        </div>
+        <div style="display: flex;width: 100%; justify-content: center;flex-direction: column;align-items: center;">
+            <h2 style="width: auto;text-align: center;">Heading</h2>
+            <img src="images/logo.jpeg" alt="">
+            <p style="text-align: justify;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam ad minima id voluptate quis veritatis repellat nostrum! Rerum excepturi laboriosam voluptas iure. Corrupti voluptatibus distinctio modi facilis atque sequi ea?</p>
+        </div>
+
+        <div id="lastVisitMessageContainer"></div>
+    </aside>
+
+
+    <div style="width: 35%;height: 1000px;"  class="image-container">
+        <img src="images/clima.png" alt="Imagen 1">
+        <img src="images/clima.png" alt="Imagen 1">
+        <img src="images/clima.png" alt="Imagen 1">
+        <img src="images/clima.png" alt="Imagen 1">
+        <img src="images/clima.png" alt="Imagen 1">
+        <img src="images/clima.png" alt="Imagen 1">
+    </div>
   </div>
 
-  <main>
-    
 
-    <div class="secciones">
-        <section style="padding-bottom: 10px;" class="card">
-            <h3>EVENTS</h3>
-            <h4 style="margin-left: 30px;">Ribbon Cutting - The Diamond Shack</h4>
-            <h4 style="margin-left: 30px;">Join us for the grand opening of The Diamond Shack, Thursdat at 1:00 p. m.</h4>
-            <hr>
-            <a style="margin-left: 30px;" href="#">more info ...</a>
-        </section>
 
-        <section class="card target2">
-            <h3>WEATHER</h3>
-            <div style="width: 100%;display: flex; justify-content: center;">
-              <img class="img_clima" src="images/clima.png" alt="">
-              <p>Weather: Sunny, 75°F</p>
-              <p>Page Visits: 1234</p>
-            </div>
-
-            <p>Humidity: 35%</p>
-            <p>Wind Chill: N/A</p>
-            
-            
-        </section>
-    </div>
-    
-  </main>
+  
 
   <footer class="footer bg-dark text-white pt-5 pb-5">
     <div class="container text-center text-md-left">
@@ -202,6 +214,32 @@
   closeIcon.addEventListener('click', function() {
     navPrincipal.classList.toggle('hidden');
   });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const lastVisit = localStorage.getItem('lastVisit');
+  const currentDate = new Date();
+  const daysSinceLastVisit = lastVisit
+    ? Math.floor((currentDate - new Date(lastVisit)) / (1000 * 60 * 60 * 24))
+    : null;
+
+  const lastVisitMessageContainer = document.getElementById('lastVisitMessageContainer');
+  if (!lastVisit) {
+    lastVisitMessageContainer.textContent = "¡Bienvenido! Háganos saber si tiene alguna pregunta.";
+  } else if (daysSinceLastVisit === 0) {
+    lastVisitMessageContainer.textContent = "¡Volveremos tan pronto! ¡Impresionante!";
+  } else {
+    const pluralize = daysSinceLastVisit === 1 ? 'día' : 'días';
+    lastVisitMessageContainer.textContent = `La última vez que visitó fue hace ${daysSinceLastVisit} ${pluralize}.`;
+  }
+
+  const imageContainer = document.querySelector('.image-container');
+  const images = document.querySelectorAll('.image-container img');
+  images.forEach((image) => {
+    image.src = image.getAttribute('data-src');
+  });
+
+  localStorage.setItem('lastVisit', currentDate.toISOString());
 });
 
 
